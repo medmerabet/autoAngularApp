@@ -1,5 +1,10 @@
+import { HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
+import { MatNativeDateModule } from '@angular/material/core';
 import { AppComponent } from './app.component';
+import { MasterModule } from './master/master.module';
+import { MaterialModule } from './material.module';
+import { SharedModule } from './shared/shared.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -7,6 +12,13 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      imports: [
+        MaterialModule,
+        SharedModule,
+        MasterModule,
+        HttpClientModule,
+        MatNativeDateModule
+      ]
     }).compileComponents();
   });
 
@@ -26,6 +38,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('auto0421 app is running!');
+    expect(compiled.querySelector('mat-toolbar span').textContent).toContain('AutoAngular');
   });
 });
